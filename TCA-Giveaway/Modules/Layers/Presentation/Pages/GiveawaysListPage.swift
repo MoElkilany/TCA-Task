@@ -45,14 +45,8 @@ struct GiveawaysListPage: View {
                 }
             }
             .navigationTitle("Game Giveaways")
-            .onAppear {
-                if store.epicGamesStore.isEmpty {
-                    store.send(.fetchGiveawaysByPlatform(Constants.epicGamesStore.rawValue))
-                }
-                
-                if store.giveawaysList.isEmpty {
-                    store.send(.fetchGiveaways)
-                }
+            .task {
+                sendActions()
             }
             .navigationDestination(item: $store.scope(state:\.destination?.detailsPageState, action: \.destination.detailsPageState)) { store in
                 GiveawaysDetailsPage(store:store)
@@ -66,3 +60,15 @@ struct GiveawaysListPage: View {
     }
 }
 
+
+extension GiveawaysListPage {
+    private func sendActions() {
+        if store.epicGamesStore.isEmpty {
+            store.send(.fetchGiveawaysByPlatform(Constants.epicGamesStore.rawValue))
+        }
+        
+        if store.giveawaysList.isEmpty {
+            store.send(.fetchGiveaways)
+        }
+    }
+}

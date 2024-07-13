@@ -68,7 +68,6 @@ struct GiveawaysDetailsPage: View {
             .padding(.horizontal)
             Spacer()
         }
-        .padding()
         .ignoresSafeArea()
         
         .onAppear {
