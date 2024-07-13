@@ -18,7 +18,7 @@ This is a simplified iOS application that integrates with the GamerPower giveawa
 - SwiftUI for UI components.
 - The Composable Architecture (TCA) for state management.
 - URLSessions for networking.
-=
+
 ## Setup Instructions
 
 1. Clone the repository.
