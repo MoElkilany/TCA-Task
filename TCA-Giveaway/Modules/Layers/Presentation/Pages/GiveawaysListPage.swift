@@ -45,7 +45,7 @@ struct GiveawaysListPage: View {
                 }
             }
             .navigationTitle("Game Giveaways")
-            .task {
+            .onAppear {
                 sendActions()
             }
             .navigationDestination(item: $store.scope(state:\.destination?.detailsPageState, action: \.destination.detailsPageState)) { store in
